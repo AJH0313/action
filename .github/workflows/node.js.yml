@@ -30,13 +30,13 @@ jobs:
     - run: date
     - run: npm run-script
 
-    display:
+    # display:
     
-      needs: build
-      runs-on: window
+    #   needs: build
+    #   runs-on: window
 
-      steps:
-        - uses: actions/checkout@v3
-        - name: start npm
+    #   steps:
+    #     - uses: actions/checkout@v3
+    #     - name: start npm
 
-        -run: npm run start
+    #     -run: npm run start
