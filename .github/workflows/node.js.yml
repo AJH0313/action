@@ -29,4 +29,3 @@ jobs:
     - run: npm test
     - run: date
     - run: npm run-script
-    - run: npm run-script doit
