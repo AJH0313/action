@@ -7,6 +7,7 @@ on:
   [push, pull_request]
 
 jobs:
+ job1:
   build:
 
     runs-on: ubuntu-latest
@@ -26,3 +27,21 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+
+  job2:
+    need: [job1]
+      runs-on: window
+
+      strategy:
+        matrix:
+          node-version: [16.x]
+          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+      steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm run start
