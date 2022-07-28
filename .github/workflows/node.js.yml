@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: window-latest
 
     strategy:
       matrix:
@@ -29,14 +29,3 @@ jobs:
     - run: npm test
     - run: date
     - run: npm run-script
-
-    # display:
-    
-    #   needs: build
-    #   runs-on: window
-
-    #   steps:
-    #     - uses: actions/checkout@v3
-    #     - name: start npm
-
-    #     -run: npm run start
