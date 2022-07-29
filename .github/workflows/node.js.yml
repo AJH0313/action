@@ -95,3 +95,26 @@ jobs:
 
     - run: echo 'test2, this job is need build. And this job will play same time with test1.'
     - run: date
+
+
+  test3:
+
+    needs: build2
+    runs-on: ubuntu-latest
+    name: test3
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - run: echo 'test2, this job is need build2.'
+    - run: date
