@@ -31,6 +31,27 @@ jobs:
     - run: npm test
     - run: echo 'build is end!'
 
+  build2:
+
+    runs-on: ubuntu-latest
+    name: build2
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - run: date
+    - run: echo 'this job will play same time with build.'
+
   test:
 
     needs: build
@@ -50,9 +71,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - run: echo 'test, this job may not end.'
+    - run: echo 'test1, this job is need build.'
     - run: date
-    - run: npm run start
 
   test2:
 
@@ -73,5 +93,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - run: echo 'test2, this job may end....right?'
+    - run: echo 'test2, this job is need build. And this job will play same time with test1.'
     - run: date
