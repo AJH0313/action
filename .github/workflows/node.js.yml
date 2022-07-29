@@ -34,7 +34,6 @@ jobs:
 
     test:
 
-    runs-on: ubuntu-latest
     needs: build
 
     step:
