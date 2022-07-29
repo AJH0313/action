@@ -30,7 +30,7 @@ jobs:
 
     
 
-    install:
+    job2:
 
       need: build
       runs-on: ubuntu-latest
