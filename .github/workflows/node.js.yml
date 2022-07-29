@@ -36,7 +36,7 @@ jobs:
 
     needs: build
 
-    step:
+    steps:
     - uses: actions/checkout@v3
     - name: test
     - run: echo 'test?'
